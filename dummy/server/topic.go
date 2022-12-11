@@ -4,14 +4,14 @@ import "github.com/greggolang/eventStoreClient"
 
 type Topic struct {
 	Name          string
-	Listeners     *eventeur.Store[Client]
+	Listeners     *eventStoreClient.Store[Client]
 	subscriberMap map[uint64]uint64
 }
 
 func newTopic(name string) *Topic {
 	return &Topic{
 		Name:          name,
-		Listeners:     eventeur.NewStore[Client](),
+		Listeners:     eventStoreClient.NewStore[Client](),
 		subscriberMap: make(map[uint64]uint64),
 	}
 }
@@ -40,13 +40,13 @@ func (t *Topic) Publish(client *Client, data []byte) {
 }
 
 type TopicStore struct {
-	store    *eventeur.Store[Topic]
+	store    *eventStoreClient.Store[Topic]
 	topicMap map[string]uint64
 }
 
 func NewTopicStore() *TopicStore {
 	return &TopicStore{
-		store:    eventeur.NewStore[Topic](),
+		store:    eventStoreClient.NewStore[Topic](),
 		topicMap: make(map[string]uint64),
 	}
 }

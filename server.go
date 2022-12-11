@@ -1,4 +1,4 @@
-package eventeur
+package eventStoreClient
 
 type EventeurServer interface {
 	Publish(clientID uint64, topic string, data []byte) error

@@ -1,4 +1,4 @@
-package eventeur
+package eventStoreClient
 
 import (
 	"sync"

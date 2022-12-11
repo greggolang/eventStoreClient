@@ -14,18 +14,18 @@ import (
 
 type Server struct {
 	config   Config
-	clients  *eventeur.Store[Client]
+	clients  *eventStoreClient.Store[Client]
 	topics   *TopicStore
-	messages *eventeur.Store[Message]
+	messages *eventStoreClient.Store[Message]
 	queues   map[string]chan []byte
 }
 
 func NewDummyServer(config Config) *Server {
 	return &Server{
-		clients: eventeur.NewStore[Client](),
+		clients: eventStoreClient.NewStore[Client](),
 		topics:  NewTopicStore(),
 		// TODO: implement events storage for replays.
-		messages: eventeur.NewStore[Message](),
+		messages: eventStoreClient.NewStore[Message](),
 	}
 }
 

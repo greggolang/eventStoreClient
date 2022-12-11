@@ -1,4 +1,4 @@
-package eventeur
+package eventStoreClient
 
 type EventeurEventHandler func(clientID uint64, data []byte)
 
